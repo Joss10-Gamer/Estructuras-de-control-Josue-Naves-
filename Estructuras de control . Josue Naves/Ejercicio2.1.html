@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nota final del alumno</title>
+</head>
+<body>
+
+    <h2>Presiona el botón para calcular la nota final</h2>
+    <button onclick="calcularNota()">Calcular Nota</button>
+
+    <script>
+        function calcularNota() {
+            let nombre = prompt("Ingresa el nombre del alumno:");
+            let carnet = prompt("Ingresa el carnet:");
+
+            let examen = parseFloat(prompt("Ingresa la nota del examen (20%):"));
+            let tareas = parseFloat(prompt("Ingresa la nota de tareas (40%):"));
+            let asistencia = parseFloat(prompt("Ingresa la nota de asistencia (10%):"));
+            let investigacion = parseFloat(prompt("Ingresa la nota de investigación (30%):"));
+
+            let notaFinal = (examen * 0.20) + (tareas * 0.40) + (asistencia * 0.10) + (investigacion * 0.30);
+
+            alert("Nombre: " + nombre +
+                  "\nCarnet: " + carnet +
+                  "\nNota Final: " + notaFinal.toFixed(2));
+        }
+    </script>
+
+</body>
+</html>

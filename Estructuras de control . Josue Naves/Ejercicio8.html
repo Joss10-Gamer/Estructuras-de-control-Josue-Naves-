@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 8 - Tabla de Multiplicar</title>
+     <style>
+        body {
+            background-color: rgb(194, 144, 103);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrado vertical */
+            align-items: center;     /* Centrado horizontal */
+            height: 100vh;           /* Altura completa del viewport */
+            margin: 0;               /* Eliminar márgenes predeterminados */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h2 {
+            color: rgb(0, 0, 0);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Tabla de multiplicar del 1 al 10</h2>
+    <button onclick="mostrarTabla()">Mostrar tabla</button>
+
+    <div id="resultado" style="margin-top: 20px; font-family: monospace;"></div>
+
+    <script>
+        function mostrarTabla() {
+            // Pedimos el número al usuario
+            let entrada = prompt("Ingrese un número para ver su tabla de multiplicar del 1 al 10:");
+            let numero = parseInt(entrada);
+
+            // Validamos que el valor ingresado sea un número
+            if (isNaN(numero)) {
+                alert("Por favor, ingrese un número válido.");
+                return;
+            }
+
+            // Generamos la tabla de multiplicar
+            let tabla = "<strong>Tabla del " + numero + "</strong><br>";
+
+            for (let i = 1; i <= 10; i++) {
+                let resultado = numero * i;
+                tabla += numero + " × " + i + " = " + resultado + "<br>";
+            }
+
+            // Mostramos el resultado en el HTML
+            document.getElementById("resultado").innerHTML = tabla;
+        }
+    </script>
+
+</body>
+</html>

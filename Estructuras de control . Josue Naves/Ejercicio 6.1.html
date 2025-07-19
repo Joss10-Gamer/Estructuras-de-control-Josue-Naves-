@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Descuento de Viaje Turístico</title>
+    <style>
+        body {
+            background-image: url("https://img3.wallspic.com/previews/8/3/4/3/4/143438/143438-aviacion-ingenieria_aeroespacial-aeronave-puesta-vuelo-x750.jpg");
+            background-size: cover;           /* Para que cubra toda la pantalla */
+            background-position: center;      /* Centrada */
+            background-repeat: no-repeat;     /* Que no se repita */
+            height: 100vh;
+            margin: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white; /* Color de texto claro para que se vea en fondo oscuro */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000; /* Para mejor visibilidad */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.8); /* Botón visible sobre fondo */
+            color: #333;
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Calculadora de Descuento de Viajes</h2>
+    <button onclick="calcularDescuento()">Calcular Descuento</button>
+
+    <script>
+        function calcularDescuento() {
+            let origen = prompt("Ingrese la ciudad de origen:").toLowerCase();
+            let destino = prompt("Ingrese la ciudad de destino:").toLowerCase();
+            let precio = parseFloat(prompt("Ingrese el precio del viaje:"));
+
+            let descuento = 0;
+
+            if (origen === "palma") {
+                if (destino === "la costa del sol") {
+                    descuento = 0.05;
+                } else if (destino === "panchimalco") {
+                    descuento = 0.10;
+                } else if (destino === "puerto el triunfo") {
+                    descuento = 0.15;
+                } else {
+                    alert("Destino sin descuento.");
+                    return;
+                }
+
+                let montoDescuento = precio * descuento;
+                let precioFinal = precio - montoDescuento;
+
+                alert("Origen: " + origen.charAt(0).toUpperCase() + origen.slice(1) +
+                      "\nDestino: " + destino.charAt(0).toUpperCase() + destino.slice(1) +
+                      "\nDescuento aplicado: " + (descuento * 100) + "%" +
+                      "\nPrecio con descuento: $" + precioFinal.toFixed(2));
+            } else {
+                alert("No se aplica descuento ya que el origen no es Palma.");
+            }
+        }
+    </script>
+
+</body>
+</html>

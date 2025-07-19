@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Ejercicio 7 - Análisis de 10 Números</title>
+    <style>
+        body {
+            background-color: rgb(151,183,211);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrado vertical */
+            align-items: center;     /* Centrado horizontal */
+            height: 100vh;           /* Altura completa del viewport */
+            margin: 0;               /* Eliminar márgenes predeterminados */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h2 {
+            color: rgb(0, 0, 0);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+<img src="https://imagenes.elpais.com/resizer/v2/GS3FZX5YFVC6HCBGALQNVMYZTE.jpg?auth=2096df914c557f9e4b1788fb84a1d3358ba7ffa41b12a5ca05031765bd4eacb6&width=1960&height=1470&smart=true" alt="Calculo Numerico" width="300"> 
+    <h2>Analizador de 10 números</h2>
+    <button onclick="analizarNumeros()">Iniciar</button>
+
+    <script>
+        function analizarNumeros() {
+            let negativos = 0;
+            let positivos = 0;
+            let multiplosDe15 = 0;
+            let sumaPares = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                let entrada = prompt("Ingresa el número #" + i + ":");
+                let numero = parseInt(entrada);
+
+                if (isNaN(numero)) {
+                    alert("Por favor, ingresa un número válido.");
+                    i--; // Repetir esta vuelta del ciclo
+                    continue;
+                }
+
+                // Clasificación por signo
+                if (numero < 0) {
+                    negativos++;
+                } else if (numero > 0) {
+                    positivos++;
+                }
+
+                // Verificar múltiplos de 15
+                if (numero % 15 === 0) {
+                    multiplosDe15++;
+                }
+
+                // Acumulado de pares
+                if (numero % 2 === 0) {
+                    sumaPares += numero;
+                }
+            }
+
+            // Resultados
+            let mensaje = "Resultados del análisis:\n";
+            mensaje += "Números negativos: " + negativos + "\n";
+            mensaje += "Números positivos: " + positivos + "\n";
+            mensaje += "Múltiplos de 15: " + multiplosDe15 + "\n";
+            mensaje += "Suma de números pares: " + sumaPares;
+
+            alert(mensaje);
+        }
+    </script>
+
+</body>
+</html>

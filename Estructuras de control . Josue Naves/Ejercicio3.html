@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Aumento Salarial</title>
+    <style>
+        body {
+            background-color: rgb(63, 168, 86);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrado vertical */
+            align-items: center;     /* Centrado horizontal */
+            height: 100vh;           /* Altura completa del viewport */
+            margin: 0;               /* Eliminar márgenes predeterminados */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Calculadora de Aumento Salarial</h2> 
+    <button onclick="calcularAumento()">Calcular Aumento</button>
+
+    <script>
+        function calcularAumento() {
+            let nombre = prompt("Ingrese el nombre del empleado:");
+            let salario = parseFloat(prompt("Ingrese el salario actual:"));
+            let categoria = prompt("Ingrese la categoría del empleado (A, B, C o D):").toUpperCase();
+
+            let porcentajeAumento = 0;
+
+            if (categoria === "A") {
+                porcentajeAumento = 0.15;
+            } else if (categoria === "B") {
+                porcentajeAumento = 0.30;
+            } else if (categoria === "C") {
+                porcentajeAumento = 0.10;
+            } else if (categoria === "D") {
+                porcentajeAumento = 0.20;
+            } else {
+                alert("Categoría inválida. Usa A, B, C o D.");
+                return;
+            }
+
+            let aumento = salario * porcentajeAumento;
+            let nuevoSalario = salario + aumento;
+
+            alert("Nombre del empleado: " + nombre +
+                  "\nCategoría: " + categoria +
+                  "\nSalario actual: $" + salario.toFixed(2) +
+                  "\nAumento: $" + aumento.toFixed(2) +
+                  "\nNuevo salario: $" + nuevoSalario.toFixed(2));
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Descuento de Viaje Turístico</title>
+    <style>
+        body {
+            background-color: rgb(151,183,211);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrado vertical */
+            align-items: center;     /* Centrado horizontal */
+            height: 100vh;           /* Altura completa del viewport */
+            margin: 0;               /* Eliminar márgenes predeterminados */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://media.istockphoto.com/id/96653894/es/foto/avión-en-el-cielo.jpg?s=612x612&w=0&k=20&c=0mOivOTLB6WkvGyLqYKlj5lrlvjslWyipAA8WDijVRc=" alt="Viaje turístico" width="300">    
+    <h2>Calculadora de Descuento de Viajes</h2>
+    <button onclick="calcularDescuento()">Calcular Descuento</button>
+
+    <script>
+        function calcularDescuento() {
+            let origen = prompt("Ingrese la ciudad de origen:").toLowerCase();
+            let destino = prompt("Ingrese la ciudad de destino:").toLowerCase();
+            let precio = parseFloat(prompt("Ingrese el precio del viaje:"));
+
+            let descuento = 0;
+
+            if (origen === "palma") {
+                if (destino === "la costa del sol") {
+                    descuento = 0.05;
+                } else if (destino === "panchimalco") {
+                    descuento = 0.10;
+                } else if (destino === "puerto el triunfo") {
+                    descuento = 0.15;
+                } else {
+                    alert("Destino sin descuento.");
+                    return;
+                }
+
+                let montoDescuento = precio * descuento;
+                let precioFinal = precio - montoDescuento;
+
+                alert("Origen: " + origen.charAt(0).toUpperCase() + origen.slice(1) +
+                      "\nDestino: " + destino.charAt(0).toUpperCase() + destino.slice(1) +
+                      "\nDescuento aplicado: " + (descuento * 100) + "%" +
+                      "\nPrecio con descuento: $" + precioFinal.toFixed(2));
+            } else {
+                alert("No se aplica descuento ya que el origen no es Palma.");
+            }
+        }
+    </script>
+
+</body>
+</html>

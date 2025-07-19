@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Temperatura</title>
+     
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body  style="background-color: rgb(114, 180, 189);">
+
+    <div class="container text-center mt-5">
+        <h2>Conversor de Celsius a Fahrenheit</h2>
+        <p>Ingresa la temperatura en grados Celsius:</p>
+
+        <input type="number" id="celsiusInput" class="form-control w-25 mx-auto" placeholder="Ej: 25">
+        <button onclick="convertirTemperatura()" class="btn btn-primary mt-3">Convertir</button>
+
+        <div id="resultado" class="mt-4 fs-5 fw-bold"></div>
+    </div>
+
+    <script>
+        function convertirTemperatura() {
+            let celsius = parseFloat(document.getElementById("celsiusInput").value);
+
+            if (isNaN(celsius)) {
+                document.getElementById("resultado").textContent = "Por favor, ingresa una temperatura válida.";
+                return;
+            }
+
+            let fahrenheit = (celsius * 9/5) + 32;
+            let mensaje = "";
+
+            if (fahrenheit >= 14 && fahrenheit < 32) {
+                mensaje = "Temperatura baja";
+            } else if (fahrenheit >= 32 && fahrenheit < 68) {
+                mensaje = "Temperatura adecuada";
+            } else if (fahrenheit >= 68 && fahrenheit < 96) {
+                mensaje = "Temperatura alta";
+            } else {
+                mensaje = "Temperatura desconocida";
+            }
+
+            document.getElementById("resultado").innerHTML = `
+                <p>${celsius}°C equivalen a ${fahrenheit.toFixed(2)}°F</p>
+                <p>${mensaje}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>

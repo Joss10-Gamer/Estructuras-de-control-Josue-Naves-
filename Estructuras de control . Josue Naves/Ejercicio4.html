@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Número mayor</title>
+</head>
+<body  style="background-color: rgb(114, 180, 189);">
+
+    <h2>Comparar dos números</h2>
+    <button onclick="compararNumeros()">Comparar</button>
+
+    <script>
+        function compararNumeros() {
+            let numero1 = parseInt(prompt("Ingresa el primer número entero:"));
+            let numero2 = parseInt(prompt("Ingresa el segundo número entero:"));
+
+            if (isNaN(numero1) || isNaN(numero2)) {
+                alert("Por favor, ingresa solo números válidos.");
+                return;
+            }
+
+            if (numero1 > numero2) {
+                alert("El número mayor es: " + numero1);
+            } else if (numero2 > numero1) {
+                alert("El número mayor es: " + numero2);
+            } else {
+                alert("Ambos números son iguales.");
+            }
+        }
+    </script>
+
+</body>
+</html>

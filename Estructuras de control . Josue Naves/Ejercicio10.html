@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Promedios por Turno</title>
+    <style>
+        body {
+           
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrado vertical */
+            align-items: center;     /* Centrado horizontal */
+            height: 100vh;           /* Altura completa del viewport */
+            margin: 0;               /* Eliminar márgenes predeterminados */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: rgb(143, 212, 157);">
+
+    <div class="container text-center mt-5">
+        <h2>Promedio de edades por turno</h2>
+        <p>Presiona el botón para ingresar las edades por turno y calcular los promedios.</p>
+        <button onclick="calcularPromedios()" class="btn btn-primary">Iniciar</button>
+
+        <div id="resultado" class="mt-4 fs-5 fw-semibold"></div>
+    </div>
+
+    <script>
+        function calcularPromedios() {
+            let turnos = {
+                mañana: { cantidad: 5, suma: 0, promedio: 0 },
+                tarde: { cantidad: 6, suma: 0, promedio: 0 },
+                noche: { cantidad: 11, suma: 0, promedio: 0 }
+            };
+
+            // Recorremos los turnos
+            for (let turno in turnos) {
+                for (let i = 1; i <= turnos[turno].cantidad; i++) {
+                    let edad = parseInt(prompt(`Ingresa la edad del estudiante #${i} del turno ${turno}:`));
+                    if (isNaN(edad) || edad <= 0) {
+                        alert("Edad inválida. Intenta de nuevo.");
+                        i--; // Repite el ingreso si la edad es inválida
+                    } else {
+                        turnos[turno].suma += edad;
+                    }
+                }
+                turnos[turno].promedio = turnos[turno].suma / turnos[turno].cantidad;
+            }
+
+            // Determinar cuál promedio es mayor
+            let mayorTurno = "";
+            if (turnos.mañana.promedio > turnos.tarde.promedio && turnos.mañana.promedio > turnos.noche.promedio) {
+                mayorTurno = "mañana";
+            } else if (turnos.tarde.promedio > turnos.mañana.promedio && turnos.tarde.promedio > turnos.noche.promedio) {
+                mayorTurno = "tarde";
+            } else if (turnos.noche.promedio > turnos.mañana.promedio && turnos.noche.promedio > turnos.tarde.promedio) {
+                mayorTurno = "noche";
+            } else {
+                mayorTurno = "Hay empate entre dos o más turnos.";
+            }
+
+            // Mostrar resultados
+            let resultadoHTML = `
+                Promedio turno mañana: ${turnos.mañana.promedio.toFixed(2)}<br>
+                Promedio turno tarde: ${turnos.tarde.promedio.toFixed(2)}<br>
+                Promedio turno noche: ${turnos.noche.promedio.toFixed(2)}<br><br>
+                <strong>${typeof mayorTurno === "string" && mayorTurno.includes("empate") ? mayorTurno : "El turno con mayor promedio es: " + mayorTurno}</strong>
+            `;
+
+            document.getElementById("resultado").innerHTML = resultadoHTML;
+        }
+    </script>
+
+</body>
+</html>
